@@ -90,21 +90,13 @@ USER scitech
 
 WORKDIR /home/scitech
 
-# Set ARG on build so that we can pull latest pegasus 
-ARG BUILD_DATE=2020-06-01_12:59:18
-
-# Get Pegasus master
-RUN git clone https://github.com/pegasus-isi/pegasus.git \
-    && cd pegasus \
-    && ant dist
-
-ENV PATH /home/scitech/pegasus/dist/pegasus-5.0.0dev/bin:$HOME/.pyenv/bin:$PATH:/usr/lib64/mpich/bin
-ENV PYTHONPATH /home/scitech/pegasus/dist/pegasus-5.0.0dev/lib64/python3.6/site-packages
+ENV PATH /home/scitech/shared-data/pegasus/dist/pegasus-5.0.0dev/bin:$HOME/.pyenv/bin:$PATH:/usr/lib64/mpich/bin
+ENV PYTHONPATH /home/scitech/shared-data/pegasus/dist/pegasus-5.0.0dev/lib64/python3.6/site-packages
 
 # Set Kernel for Jupyter (exposes PATH and PYTHONPATH for use when terminal from jupyter is used)
 ADD ./config/kernel.json /usr/local/share/jupyter/kernels/python3/kernel.json
-RUN echo -e "export PATH=/home/scitech/pegasus/dist/pegasus-5.0.0dev/bin:/home/scitech/.pyenv/bin:\$PATH:/usr/lib64/mpich/bin" >> /home/scitech/.bashrc
-RUN echo -e "export PYTHONPATH=/home/scitech/pegasus/dist/pegasus-5.0.0dev/lib64/python3.6/site-packages" >> /home/scitech/.bashrc
+RUN echo -e "export PATH=/home/scitech/shared-data/pegasus/dist/pegasus-5.0.0dev/bin:/home/scitech/.pyenv/bin:\$PATH:/usr/lib64/mpich/bin" >> /home/scitech/.bashrc
+RUN echo -e "export PYTHONPATH=/home/scitech/shared-data/pegasus/dist/pegasus-5.0.0dev/lib64/python3.6/site-packages" >> /home/scitech/.bashrc
 
 # Setup intellisense in jupyter
 CMD ipython --IPCompleter.greedy=True
