@@ -8,7 +8,7 @@ sudo chown :808 ./shared-data \
 
 docker image build \
     --build-arg BUILD_DATE=$(date +%Y-%m-%d_%H:%M:%S) \
-    -t ryantanaka/pegasus5-condor .
+    -t lpottier/pegasus5-condor-ai .
 
 
 

@@ -53,7 +53,12 @@ RUN yum -y install \
      wget \
      which \
      yum-plugin-priorities \
-     zlib-devel 
+     zlib-devel
+     # atlas \
+     # atlas-devel \
+     # gcc-gfortran \
+     # openssl-devel \
+     # libffi-devel
 
 # Docker + Docker in Docker setup
 RUN curl -sSL https://get.docker.com/ | sh
@@ -69,6 +74,13 @@ RUN pip3 install tox
 
 # Documentation - FIXME: not a great idea to use pip3 install in this container
 RUN pip3 install six sphinx recommonmark sphinx_rtd_theme sphinxcontrib-openapi javasphinx jupyter
+
+# Install AI requirements: FIXME: Use Conda instead for performance
+RUN pip3 install \
+     tensorflow==1.14.0 \
+     tensorboard==1.14.0 \
+     tensorflow-estimator==1.14.0 \
+     tensorflow-gpu==1.14.0
 
 # Set Timezone
 RUN cp /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
