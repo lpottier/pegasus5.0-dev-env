@@ -1,11 +1,12 @@
-## Pegasus 5.0 Development Environment
+## Pegasus 5.0 Development Environment for AI workflows
 
-Use this environment to play around with the 5.0 python api, develop and run
+Use this environment to play around with the 5.0 python API, develop and run
 small workflows from a jupyter notebook or jupyter terminal. Nested docker 
-containers are supported.
+containers are supported. This is a fork from https://github.com/ryantanaka/pegasus5.0-dev-env
+dedicated to support AI workflows, Tensorflow, pytorch and and many other packages are pre-installed.
 
 ### Usage
-1. `git clone https://github.com/ryantanaka/pegasus5.0-dev-env.git`
+1. `git clone https://github.com/lpottier/pegasus5.0-dev-env.git`
 2. `./build.sh`
     - This will build the image from scratch and will take 10 minutes or so. 
     Subsequent calls to this always build the latest Pegasus master. All previous
